@@ -1,4 +1,5 @@
 import csv
+import numpy as np
 
 def read_period_csv(csv_path): #converts csv to lists
     PERIOD = []
@@ -58,6 +59,9 @@ def split_datasets(period_list, timedelta_list, dst_list): #splits the data into
 def init_dataset(csv_path):
     PERIOD, TIMEDELTA, DST = read_period_csv(csv_path)
     SET_A, SET_B, SET_C = split_datasets(PERIOD, transform_timedelta_to_int(TIMEDELTA), normalize_dst(transform_dst_to_int(DST)))
+    SET_A = np.array(SET_A[2]).reshape(-1, 1)
+    SET_B = np.array(SET_B[2]).reshape(-1, 1)
+    SET_C = np.array(SET_C[2]).reshape(-1, 1)
     return SET_A, SET_B, SET_C
 
 if __name__ == "__main__":
