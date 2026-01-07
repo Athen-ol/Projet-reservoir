@@ -55,11 +55,11 @@ def split_datasets(period_list, timedelta_list, dst_list): #splits the data into
     return SET_A, SET_B, SET_C
 
 
+def init_dataset(csv_path):
+    PERIOD, TIMEDELTA, DST = read_period_csv(csv_path)
+    SET_A, SET_B, SET_C = split_datasets(PERIOD, transform_timedelta_to_int(TIMEDELTA), normalize_dst(transform_dst_to_int(DST)))
+    return SET_A, SET_B, SET_C
+
 if __name__ == "__main__":
     csv_path = "dst_labels.csv"
-    PERIOD, TIMEDELTA, DST = read_period_csv(csv_path)
-    print("DST_len :", len(PERIOD))
-    SET_A, SET_B, SET_C = split_datasets(PERIOD, transform_timedelta_to_int(TIMEDELTA), normalize_dst(transform_dst_to_int(DST)))
-    print("SET_A_len :%d, SET_B_len :%d, SET_C_len :%d" % (len(SET_A[0]), len(SET_B[0]), len(SET_C[0])))
-    print("sum is :", len(SET_A[0]) + len(SET_B[0]) + len(SET_C[0]))
-    print(SET_A[1][:30])
+    SET_A, SET_B, SET_C = init_dataset(csv_path)
