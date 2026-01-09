@@ -1,5 +1,8 @@
 # Projet-reservoir
 
+Antonin de Bouter  
+Quentin Fallito
+
 Ce repo contient :
 - notre dataset dans dst_labels.csv
 - nos fonctions de formatage des données dans dataset_prep.py
